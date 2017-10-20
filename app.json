@@ -1,0 +1,38 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/test/test",
+    "pages/filmDetail/filmDetail"
+    
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#47a86c",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText":  "电影推荐",
+    "backgroundColor": "#fff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {  
+   "color": "#a9b7b7",  
+   "selectedColor": "#11cd6e",  
+   "borderStyle":"white",  
+   "list": [{  
+     "selectedIconPath": "images/1.png",  
+     "iconPath": "images/1.png",  
+     "pagePath": "pages/index/index",  
+     "text": "首页"  
+   }, {  
+     "selectedIconPath": "images/1.png",  
+     "iconPath": "images/1.png",  
+     "pagePath": "pages/logs/logs",  
+     "text": "日志"  
+   }, {  
+     "selectedIconPath": "images/1.png",  
+     "iconPath": "images/1.png",  
+     "pagePath": "pages/test/test",  
+     "text": "开心测试"  
+   }]  
+ }
+}
