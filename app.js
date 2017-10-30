@@ -44,7 +44,7 @@ App({
         var locationParam = res.latitude + ',' + res.longitude + '1'
         wx.request({  //request 就是一个异步的ajax请求
           url: 'https://api.map.baidu.com/geocoder/v2/', //调用百度地图api
-          data: {
+          data: { //ak是百度地图上的key
             ak: 'Y1R5guY8Y2GNRdDpLz7SUeM3QgADAXec',
             location: locationParam,
             output: 'json',

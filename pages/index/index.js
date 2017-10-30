@@ -10,6 +10,7 @@ Page({ //index 中所用要是用的函数,全部在这进行定义
     bannerList: api.bannerList, //轮播图地址列表
     hasMore: true, //获取到更多的数据
     showLoading: true, //开始的时候是是否显示
+    showing:false,
     
   },
   onLoad: function () {//在渲染的时候就会调用的函数(数据的初始化渲染可以在此进行)
@@ -39,7 +40,13 @@ Page({ //index 中所用要是用的函数,全部在这进行定义
 		// }
   },
 
-  //我他喵的还以为我打开的方式是不对的,原来是开始的点击时出现了问题,那么也就是时候,除了这一块,我其他的都将不在会是问题的
+  onChange :function(){ //当输入框的内容发生变化时
+    var that = this
+    that.setData({
+      showing:true
+    })
+  },
+ 
   viewFilmDetail: function(e) {
     console.log(e,'eee')
 		var data = e.currentTarget.dataset;

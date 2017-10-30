@@ -1,27 +1,41 @@
 <!--index.wxml-->
 <view class="container">
+    <!-- 搜索功能,在输入的文字发生变化时,或者被点击是弹出一个覆盖框
+囊括着搜索的内容以及,后续的内容 
+binchange 事件会在失去焦点之后才会触发
+-->
 
     <view class="search-bar">
-        <input class="search-txt" placeholder-class="search-txt-plc" bindfocus="viewSearch" placeholder="请输入关键词搜索" type="text"/>
+        <form bindsubmit="search">
+            <input class="search-txt" name="keyword" placeholder="{{searchType == 'keyword' ? '电影标题、演员或导演' : '影片类型，如：爱情、喜剧'}}"
+            />
+            <button class="search-btn" formType="submit">搜索</button>
+        </form>
     </view>
-<!--轮播图,可以用片段来进行控制 -->
- <!-- 轮播图没有问题了,事件也没有问题了,那就是判断什么时候开始出现这个 -->
- <!-- 判断是用if来进行的 -->
-<swiper class="banner" indicator-dots="true" autoplay="true">
-    <block wx:for="{{bannerList}}" wx:for-item="bannerItem" wx:for-index="bannerIndex" wx:key="banner">
-        <swiper-item data-type="{{bannerItem.type}}" data-id="{{bannerItem.id}}" bindtap="viewBannerDetail">
-            <image src="{{bannerItem.imgUrl}}" class="banner-item"></image>
-        </swiper-item>
-    </block>
-</swiper>
+    <view class="search-nav" wx:if='{{showing}}'>
+        <!-- meikan dong  -->
+        <!-- 如果这一段太多的话,可以在这里插入一段的html片段 -->
+        <import src="../search/search.wxml" />
+        <template is="search" />
+    </view>
+    <!--轮播图,可以用片段来进行控制 在点击轮播图的时候,应该要完成一个界面的跳转 -->
+    <!-- 轮播图没有问题了,事件也没有问题了,那就是判断什么时候开始出现这个 -->
+    <!-- 判断是用if来进行的 -->
+    <swiper class="banner" indicator-dots="true" autoplay="true">
+        <block wx:for="{{bannerList}}" wx:for-item="bannerItem" wx:for-index="bannerIndex" wx:key="banner">
+            <swiper-item data-type="{{bannerItem.type}}" data-id="{{bannerItem.id}}" bindtap="viewBannerDetail">
+                <image src="{{bannerItem.imgUrl}}" class="banner-item"></image>
+            </swiper-item>
+        </block>
+    </swiper>
 
-<view class="moveList">
-    <view wx:for="{{films}}"  wx:key="index">
-        <view data-id="{{item.id}}"  catchtap="viewFilmDetail">
-            <image src="{{item.images.large}}" class="imgList"></image> 
-          </view>
-        <view class="textList">{{item.title}}</view>
+    <view class="moveList">
+        <view wx:for="{{films}}" wx:key="index">
+            <view data-id="{{item.id}}" catchtap="viewFilmDetail">
+                <image src="{{item.images.large}}" class="imgList"></image>
+            </view>
+            <view class="textList">{{item.title}}</view>
+        </view>
     </view>
-</view>
-     
+
 </view>
